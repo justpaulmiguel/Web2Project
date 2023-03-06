@@ -42,7 +42,7 @@
                     $heroLower = strtolower($heroName);
 
                     if(str_contains($heroLower, $search)==true){
-                        echo'<button type="submit" name="hero" value="'.$heroName.'" class="text-xl font-semibold text-violet-900 underline">'.$heroName.'</button>';
+                        echo'<button type="submit" name="heroName" value="'.$heroName.'" class="text-xl font-semibold text-violet-900 underline">'.$heroName.'</button>';
                         echo '<br/><hr class="w-1/3 border-slate-500 mb-3"/>';
                     }
                 }

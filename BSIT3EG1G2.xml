@@ -3,7 +3,7 @@
   <title>Top Mobile Legend Heroes</title>
   <hero>
     <heroName>Lolita</heroName>
-    <role>Support/Tank</role>
+    <role>Tank/Support</role>
     <advisableLane>Roam</advisableLane>
     <numberOfSkin>4</numberOfSkin>
     <winRate>58.67</winRate>
@@ -21,7 +21,7 @@
   </hero>
   <hero>
     <heroName>Kimmy</heroName>
-    <role>Mage/Marksman</role>
+    <role>Marksman/Mage</role>
     <advisableLane>Jungle</advisableLane>
     <numberOfSkin>6</numberOfSkin>
     <winRate>56.81</winRate>
