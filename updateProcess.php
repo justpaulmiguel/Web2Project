@@ -53,5 +53,5 @@ $hero->appendChild($heroPic);
 
 $doc->getElementsByTagName("heroes")->item(0)->replaceChild($hero, $herotmp);
 $doc->save("BSIT3EG1G2.xml");
-echo "Record Updated...<a href='main.php'>Back</a>";
+echo "Record Updated...<a href='index.php'>Back</a>";
 ?>
