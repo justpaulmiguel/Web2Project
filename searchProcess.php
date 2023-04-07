@@ -56,6 +56,9 @@
                         echo'<button type="submit" name="heroName" value="'.$heroName.'" class="text-xl font-semibold text-violet-900 underline">'.$heroName.'</button>';
                         echo '<img src="data:image;base64,'.$heroPic.'" alt="heropic" style="width:50px; height:50px;">';
                         echo " Role : ".$heroRole."<br>";
+                        echo " Lane : ".$heroLane."<br>";
+                        echo " No. of Skin : ".$numOfSkin."<br>";
+                        echo " Release Year : ".$release."<br>";
                         echo '<br/><hr class="w-1/3 border-slate-500 mb-3"/>';
                     }
                 }

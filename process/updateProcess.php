@@ -2,22 +2,22 @@
 $doc = new DOMDocument('1.0');
 $doc->formatOutput = true;
 $doc->preserveWhiteSpace = false;
-$doc->load('BSIT3EG1G2.xml');
+$doc->load('../BSIT3EG1G2.xml');
 
 $heroName = $_POST["heroName"];
+$heroPastName = $_POST["heroPastName"];
 
 $heroes = $doc->getElementsByTagName("hero");
 
 foreach($heroes as $herotmp){     
     $heroPast = $herotmp->getElementsByTagName("heroName")->item(0)->nodeValue;
     
-    if($heroPast == $heroName){
+    if($heroPast == $heroPastName){
         $oldProfile = $herotmp->getElementsByTagName("heroPic")->item(0)->nodeValue;
         break;
     }
 }
 
-//$heroRole = $_POST["role"];
 $heroRole = implode('/', $_POST["heroRole"]);
 $advisedLane = $_POST["advisableLane"];
 $skinNum = $_POST["skinNum"];
@@ -52,6 +52,6 @@ $hero->appendChild($year);
 $hero->appendChild($heroPic);
 
 $doc->getElementsByTagName("heroes")->item(0)->replaceChild($hero, $herotmp);
-$doc->save("BSIT3EG1G2.xml");
-echo "Record Updated...<a href='index.php'>Back</a>";
+$doc->save("../BSIT3EG1G2.xml");
+echo "Record Updated...<a href='../index.html'>Back</a>";
 ?>

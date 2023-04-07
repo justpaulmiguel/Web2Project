@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="shortcut icon" href="./src/Mobile Legends Bang Bang.svg" type="image/x-icon">
+    <title>MLBB</title>
+    <script>
+        //update yung page every 3 second
+        function updatePage(){
+            setInterval(getData, 3000);
+        }
+        //get data from load.php 
+        function getData() {
+            var http = new XMLHttpRequest();
+            http.onreadystatechange = function() {
+                if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+                    var response = this.responseText;
+                    document.getElementById("heroGallery").innerHTML = response;
+                }
+            };
+            http.open("GET", "./process/load.php", true);
+            http.send();
+        }
+        //looks if user ay naginteract kay searchbox
+        function validateSearch(){
+            var searchInput = document.getElementById("searchInput").value;
+            var q = searchInput;
+
+            if(q !='' && q.trim()!==''){
+                getResults(q);
+            }else{
+                //if empty laman then remove lahat ng lumabas na result
+                const results = document.getElementById('searchResult');
+                while (results.firstChild) {
+                    results.removeChild(results.firstChild);
+                }
+            }
+        }
+        //make results as button gamit ajax
+        function getResults(q){
+            var http = new XMLHttpRequest();
+            http.onreadystatechange = function(){
+                if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+                    var response = this.responseText;
+                    document.getElementById("searchResult").innerHTML = response;
+                }
+            };
+            http.open("GET", "./process/getsearchresult.php?q="+q, true);
+            http.send();
+        }
+
+    </script>
+</head>
+<body onload="getData(),updatePage()">
+    <div class="flex w-screen h-screen bg-custom-mlLightBlue">
+        <!--toolbar here-->
+        <div id="toolPanel" class="hidden absolute z-50 xl:relative lg:relative w-full h-full md:w-1/3 xl:w-1/4 xl:flex lg:w-1/4 lg:flex flex-col bg-custom-mlDarkBlue text-slate-50 shadow-custom-mlDarkBlue">
+            <div id="searchBar" class="flex flex-col w-full h-max p-4">
+                <img src="src/logo.png" alt="logo" class="h-9 m-auto mt-3">
+                <!-- searchbar container -->
+                <section>
+                    <form id="searchForm" class="relative group mt-14 m-2 xl:mx-6">
+                        <svg width="20" height="20" fill="currentColor" class="absolute left-3 top-1/2 -mt-2.5 text-slate-400 pointer-events-none group-focus-within:text-blue-500" aria-hidden="true">
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" />
+                        </svg>
+                        <input id="searchInput" onkeyup="validateSearch()" class="bg-custom-mlDarkBlue p-1 focus:ring-2 focus:ring-blue-500 focus:outline-none appearance-none w-full text-xl leading-6 text-slate-100 placeholder-slate-400 rounded-md py-3 pl-10 ring-2 ring-custom-mlLight shadow-sm" type="text" aria-label="Search" placeholder="Search...">
+                    </form>
+                    <!--results will be displayed here-->
+                    <form action="process/heroinfo.php" id="searchResult" class="absolute w-3/4 grid grid-flow-row grid-cols-1 mx-2 text-black xl:mx-6">    
+                        <!--<button name="heroName" value="" class="w-full pl-4 pr-10 h-12 outline-none text-left border-custom-mlLight border-x-2 hover:bg-slate-400 bg-slate-300 last-of-type:rounded-b-md first-of-type:rounded-t-md first-of-type:border-t-2 last-of-type:border-b-2 odd:bg-slate-100">Layla</button>-->
+                    </form>
+                </section>
+                <!-- Searchbar end  -->
+            </div>
+            <div>
+                <section>
+                    <div id="navActions" class="flex flex-col w-full h-max mt-6 text-custom-toolbarLight">
+                        <a href="index.html"  class="p-4 hover:bg-slate-700 text-xl text-center hover:cursor-pointer font-['Ubuntu-Regular'] bg-slate-600" id="createBtn">Home</a>
+                        <a href="create.html" class="p-4 hover:bg-slate-700 text-xl text-center hover:cursor-pointer font-['Ubuntu-Regular']" id="createBtn">Create</a>
+                        <a href="update.php" class="p-4 hover:bg-slate-700 text-xl text-center hover:cursor-pointer font-['Ubuntu-Regular']" id="updateBtn">Update</a>
+                        <a href="delete.php" class="p-4 hover:bg-slate-700 text-xl text-center hover:cursor-pointer font-['Ubuntu-Regular']" id="delBtn">Delete</a>
+                    </div>
+                </section>
+            </div>
+        </div> 
+        <!--hero section here-->
+        <div id="mainPanel" class="w-full xl:w-3/4 lg:w-3/4 overflow-auto">
+            <div id="titleCont" class="w-full">
+                <h1 class="w-full text-custom-toolbarLight p-5 text-3xl text-center font-ubuntuBold">Mobile Legend Heroes</h1>
+            </div>
+            <div id="heroGallery" class="grid w-full grid-cols-1 xl:grid-cols-6 lg:grid-cols-4 md:grid-cols-3 grid-flow-row p-6 gap-2">
+                <!--dito lalabas lahat ng pic-->
+            </div>
+        </div>     
+    </div>
+</body>
+</html>

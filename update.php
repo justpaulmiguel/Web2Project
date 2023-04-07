@@ -10,7 +10,8 @@
 <body>
 <div class="w-full box-border h-screen bg-slate-100">
     <div class="w-full p-5 h-20 bg-slate-100">
-            <img src="src/logo2.png" alt="logo" class="w-40">
+        <img src="src/logo2.png" alt="logo" class="w-40">
+        <a href="index.html" class="relative float-right text-black bottom-2 text-2xl p-2">Back</a>
     </div>
     <div class="flex w-full box-border text-lg text-slate-800 p-2 flex-col">
         <h1 class="flex box-border w-full text-4xl font-semibold pt-2 pb-4 px-4 text-center text-slate-700 justify-center">Update Records</h1>
@@ -37,8 +38,8 @@
                                 <img src="data:image;base64,'.$heroPic.'" alt="lolita" class="w-28 h-28 rounded-full m-4">
                                 <div class="w-full h-full p-2">
                                     <div class="flex flex-col justify-center text-slate-100">
-                                        <h3 class="text-2xl font-bold mb-4">'.$heroName.'</h3>
-                                        <button type="submit" name="heroName" value="'.$heroName.'" class="w-1/3 bg-slate-100 text-slate-700 rounded-xl text-2xl">Update</button>
+                                        <h3 class="text-2xl font-bold mb-4">'.ucwords($heroName).'</h3>
+                                        <button type="submit" name="heroName" value="'.$heroName.'" class="w-2/4 p-3 disabled:bg-slate-300 outline-none rounded-xl text-2xl text-slate-50 font-semibold bg-slate-500">Update</button>
                                     </div>
                                 </div>
                             </div>
